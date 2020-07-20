@@ -1,3 +1,8 @@
 #!/usr/bin/python
 
-print("Hello Bioinformatics")
+n1 = 3
+
+if n1 % 2 == 0:
+    print("짝수입니다.")
+else:
+    print("홀수입니다.")
