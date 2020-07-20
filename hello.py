@@ -1,3 +1,3 @@
 #!/usr/bin/python
 
-print("Hellow World")
+print("Hello World")
