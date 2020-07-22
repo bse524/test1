@@ -1,1 +1,4 @@
-Hello python
+A: 13
+C: 2
+G: 4
+T: 5
