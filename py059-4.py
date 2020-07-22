@@ -4,7 +4,8 @@ class FASTQ:
     def __init__ (self, file_name: str):
         self.file_name=file_name
         self.read_num=0
-        self.seq = ''
+        self.base = {}
+        self.length = 0
     def count_read_num (self):
         cnt = 0
         with open (self.file_name, 'r') as handle:
@@ -14,17 +15,24 @@ class FASTQ:
                     self.read_num += 1
                 elif cnt % 4 == 1:
                     seq = line.strip()
-                    self.seq += line.strip()
+                    for s in seq:
+                        if s in self.base:
+                            self.base[s] += 1
+                        else:
+                            self.base[s] = 1
                 elif cnt % 4 == 3:
                     qual = line.strip()
                 cnt += 1
     def length_seq(self):
-        return(len(self.seq))
+        for k,v in self.base.items():
+            self.length += v
 
 file_name = sys.argv[1]
 f1 = FASTQ(file_name)
 f1.count_read_num()
 print(f1.read_num) 
+print(f1.base)
 
-res = f1.length_seq()
-print(res)
+f1.length_seq()
+print(f1.length)
+
